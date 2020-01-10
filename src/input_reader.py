@@ -2,16 +2,7 @@
 """
     Class used to read the input expression and create tokens
 """
-import enum
-
-
-class Token(enum.Enum):
-    """
-    Class to keep trace of the Token types
-    """
-    NONE = 1
-    INTEGER = 2
-    OPERATOR = 3
+from token import Token
 
 
 class InputReader(object):
