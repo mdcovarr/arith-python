@@ -1,6 +1,6 @@
 #!/usr/bin/python
 """
-    Helper function used to run the arith software
+    Helper class used to run the arith software
 """
 import sys
 import os

@@ -3,6 +3,7 @@
     Abstract child class for the integer nodes in the Abstract Syntax Tree
 """
 from ast_node import ASTNode
+from token import Token
 
 
 class ASTInteger(ASTNode):
@@ -16,3 +17,4 @@ class ASTInteger(ASTNode):
         :param value:
         """
         self.value = value
+        self.type = Token.INTEGER
