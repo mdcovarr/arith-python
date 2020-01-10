@@ -5,13 +5,15 @@
 """
 from arith import Arith
 
+
 def main():
     """
-        Main enterence of the program.
+        Main entrance of the program.
     """
     app = Arith()
 
     app.run()
+
 
 if __name__ == '__main__':
     main()
