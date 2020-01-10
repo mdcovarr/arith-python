@@ -14,7 +14,7 @@ class Token(enum.Enum):
     OPERATOR = 3
 
 
-class InputReader:
+class InputReader(object):
     """
     Class used to read in expression and create tokens if expression is valid
     """

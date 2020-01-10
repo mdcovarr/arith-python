@@ -5,6 +5,8 @@
 import sys
 import os
 from input_reader import InputReader
+from ast_integer import ASTInteger
+from ast_operator import ASTOperator
 
 
 class Arith:
