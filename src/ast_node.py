@@ -5,6 +5,4 @@
 
 
 class ASTNode(object):
-    def __init__(self):
-        self.left = None
-        self.right = None
+    pass

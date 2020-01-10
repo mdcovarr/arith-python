@@ -10,14 +10,13 @@ class ASTOperator(ASTNode):
     Class inheriting from the ASTNode to keep track of the operator nodes within
     the Abstract Syntax Tree
     """
-    def __init__(self, right_expression, left_expression, operator):
+    def __init__(self, left_child, right_child, operator):
         """
         Default constructor
-        :param right_expression:
-        :param left_expression:
+        :param right_child:
+        :param left_child:
         :param operator:
         """
-        self.right_exp = right_expression
-        self.left_exp = left_expression
-        self.oper = operator
-        super(ASTOperator, self).__init__()
+        self.left_child = left_child
+        self.right_child = right_child
+        self.operator = operator

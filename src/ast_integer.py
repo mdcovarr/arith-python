@@ -16,4 +16,3 @@ class ASTInteger(ASTNode):
         :param value:
         """
         self.value = value
-        super(ASTInteger, self).__init__()
