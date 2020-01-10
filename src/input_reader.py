@@ -28,7 +28,14 @@ class InputReader:
         self.tokens = []
         self.integers_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-']
         self.operators_list = ['+', '*']
-        self.sub_string = ""
+        self.sub_string = ''
+
+    def get_expression(self):
+        """
+        Function used to get the current expression from the user
+        :return None:
+        """
+        self.expression = raw_input("Enter expression to be parsed: ")
 
     def set_expression(self, expression):
         """
@@ -45,11 +52,14 @@ class InputReader:
         """
         return self.tokens
 
-    def delete_tokens(self):
+    def reset_reader(self):
         """
-        Function user to clear out the tokens generated from an expression
+        Function user to reset reader to default settings
         :return None:
         """
+        self.expression = ''
+        self.current_token_type = Token.NONE
+        self.sub_string = ''
         self.tokens = []
 
     def check_integer(self, current_char):

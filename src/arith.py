@@ -4,6 +4,8 @@
 """
 import sys
 import os
+from input_reader import InputReader
+
 
 class Arith:
     """
@@ -13,33 +15,17 @@ class Arith:
         """
         Default constructor for the Arith helper class
         """
-        self.expression = ""
-        self.tokens = []
-        self.valid_tokens = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '-', '+', '*']
+        self.reader = InputReader()
+
+    def create_tree(self):
+        pass
 
     def parse(self):
         """
         Function which takes a string and attempts to return an abstract syntax
         tree if valid input to arith language
         """
-        # 1st validate the expression
-        self.validate_expression()
-
-        # 2st need to parse
-        self.tokens = self.expression.split()
-
-    def validate_expression(self):
-        """
-        Function used to validate the expression as valid syntax
-        :return is_valid: boolean that is true if expression is valid, false else
-        """
-        is_valid = False
-        for character in self.expression:
-            if character not in self.valid_tokens:
-                return is_valid
-
-        is_valid = True
-        return is_valid
+        self.create_tree()
 
     def run(self):
         """
@@ -49,11 +35,10 @@ class Arith:
         """
         while True:
             try:
-                self.expression = raw_input("Enter expression to be parsed: ")
-                if self.validate_expression():
-                    self.parse()
-                else:
-                    print("'{0} is an invalid expression'".format(self.expression))
+                self.reader.get_expression()
+                self.reader.decrypt_expression()
+                print self.reader.get_tokens()
+                self.reader.reset_reader()
             except KeyboardInterrupt:
                 print("\nGracefully shutting down...")
                 try:
