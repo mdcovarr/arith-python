@@ -18,6 +18,17 @@ class Arith:
         Default constructor for the Arith helper class
         """
         self.reader = InputReader()
+        self.nodes = []
+
+    def create_nodes(self, tokens):
+        self.nodes = []
+
+        for token in tokens:
+            if token == '*' or token == '+':
+                current_node = ASTOperator('', '', token)
+            else:
+                current_node = ASTInteger(token)
+            self.nodes.append(current_node)
 
     def create_tree(self):
         pass
@@ -27,7 +38,7 @@ class Arith:
         Function which takes a string and attempts to return an abstract syntax
         tree if valid input to arith language
         """
-        self.create_tree()
+        self.create_nodes(self.reader.get_tokens())
 
     def run(self):
         """
@@ -39,11 +50,13 @@ class Arith:
             try:
                 self.reader.get_expression()
                 self.reader.decrypt_expression()
-                print self.reader.get_tokens()
-                self.reader.reset_reader()
+                self.create_nodes(self.reader.get_tokens())
+                print self.nodes
             except KeyboardInterrupt:
                 print("\nGracefully shutting down...")
                 try:
                     sys.exit(0)
                 except SystemExit:
                     os._exit(0)
+
+            self.reader.reset_reader()
