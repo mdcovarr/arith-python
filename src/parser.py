@@ -89,4 +89,4 @@ class Parser(object):
             if hasattr(current_node, 'right_child'):
                 queue.append(current_node.right_child)
 
-            print '{}'.format(current_node.value)
+            print('{}'.format(current_node.value))
