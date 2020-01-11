@@ -73,7 +73,7 @@ class Parser(object):
         """
         Function to handle the parsing and creation of the
         Abstract Syntax Tree
-        :return None:
+        :return ASTNode: the ASTNode that is the root of the AST
         """
         return self.create_ast()
 
@@ -83,13 +83,10 @@ class Parser(object):
 
         while len(queue) > 0:
             current_node = queue.pop(0)
-            try:
+
+            if hasattr(current_node, 'left_child'):
                 queue.append(current_node.left_child)
-            except AttributeError:
-                pass
-            try:
+            if hasattr(current_node, 'right_child'):
                 queue.append(current_node.right_child)
-            except AttributeError:
-                pass
 
             print '{}'.format(current_node.value)

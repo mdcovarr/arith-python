@@ -6,6 +6,7 @@ import sys
 import os
 from input_reader import InputReader
 from parser import Parser
+from interpreter import Interpreter
 from ast_integer import ASTInteger
 from ast_operator import ASTOperator
 
@@ -20,6 +21,7 @@ class Arith:
         """
         self.reader = InputReader()
         self.parser = None
+        self.interpreter = None
         self.nodes = []
 
     def create_nodes(self, tokens):
@@ -54,8 +56,10 @@ class Arith:
                 self.reader.decrypt_expression()
                 self.create_nodes(self.reader.get_tokens())
                 self.parser = Parser(self.nodes)
-                self.parser.parse()
-                self.parser.print_ast()
+                root = self.parser.parse()
+                self.interpreter = Interpreter(root)
+                value = self.interpreter.traverse_ast()
+                print('Value: {0}'.format(value))
             except KeyboardInterrupt:
                 print("\nGracefully shutting down...")
                 try:
