@@ -4,7 +4,7 @@
 import enum
 
 
-class Token(enum.Enum):
+class ASTToken(enum.Enum):
     """
     Class to keep trace of the Token types
     """

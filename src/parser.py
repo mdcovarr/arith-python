@@ -3,7 +3,7 @@
     Helper class used to create a Abstract Syntax Tree
     from a list of ASTNodes
 """
-from token import Token
+from ast_token import ASTToken
 from expression import Expression
 
 
@@ -60,7 +60,7 @@ class Parser(object):
 
         while len(self.nodes) > 0:
             self.get_next_node()
-            if self.current_node.type is Token.OPERATOR:
+            if self.current_node.type is ASTToken.OPERATOR:
                 expression.operator = self.current_node
                 self.get_next_node()
                 expression.right = self.current_node

@@ -2,7 +2,7 @@
 """
     Class used to read the input expression and create tokens
 """
-from token import Token
+from ast_token import ASTToken
 
 
 class InputReader(object):
@@ -14,7 +14,7 @@ class InputReader(object):
         Default constructor for the InputReader Class
         """
         self.expression = ''
-        self.current_token_type = Token.NONE
+        self.current_token_type = ASTToken.NONE
         self.current_position = 0
         self.tokens = []
         self.integers_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-']
@@ -49,7 +49,7 @@ class InputReader(object):
         :return None:
         """
         self.expression = ''
-        self.current_token_type = Token.NONE
+        self.current_token_type = ASTToken.NONE
         self.sub_string = ''
         self.tokens = []
 
@@ -60,16 +60,16 @@ class InputReader(object):
         :param current_char:
         :return None:
         """
-        if self.current_token_type is Token.NONE or self.current_token_type is Token.INTEGER:
+        if self.current_token_type is ASTToken.NONE or self.current_token_type is ASTToken.INTEGER:
             # append char to the running integer value being formed
             self.sub_string += current_char
-        elif self.current_token_type is Token.OPERATOR:
+        elif self.current_token_type is ASTToken.OPERATOR:
             # need to create a token for the operator
             self.tokens.append(self.sub_string)
             self.sub_string = ''
             self.sub_string += current_char
 
-        self.current_token_type = Token.INTEGER
+        self.current_token_type = ASTToken.INTEGER
 
     def check_operator(self, current_char):
         """
@@ -78,19 +78,19 @@ class InputReader(object):
         :param current_char:
         :return None:
         """
-        if self.current_token_type is Token.NONE:
+        if self.current_token_type is ASTToken.NONE:
             # needs to error since we cannot start an expression with an operator
             print('Error expression cannot start with an operator')
-        elif self.current_token_type is Token.OPERATOR:
+        elif self.current_token_type is ASTToken.OPERATOR:
             # needs to error since we cannot have two operators in a row
             print('Error, an operator cannot be followed by an operator')
-        elif self.current_token_type is Token.INTEGER:
+        elif self.current_token_type is ASTToken.INTEGER:
             # need to create a token for the integer
             self.tokens.append(self.sub_string)
             self.sub_string = ''
             self.sub_string += current_char
 
-        self.current_token_type = Token.OPERATOR
+        self.current_token_type = ASTToken.OPERATOR
 
     def add_integer_token(self, current_integer):
         """
@@ -100,7 +100,7 @@ class InputReader(object):
         """
         self.tokens.append(current_integer)
         self.sub_string = ''
-        self.current_token_type = Token.INTEGER
+        self.current_token_type = ASTToken.INTEGER
 
     def decrypt_expression(self):
         """

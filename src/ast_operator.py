@@ -3,7 +3,7 @@
     Abstract child class for the operator nodes in the Abstract Syntax Tree
 """
 from ast_node import ASTNode
-from token import Token
+from ast_token import ASTToken
 
 
 class ASTOperator(ASTNode):
@@ -21,4 +21,4 @@ class ASTOperator(ASTNode):
         self.left_child = left_child
         self.right_child = right_child
         self.value = operator
-        self.type = Token.OPERATOR
+        self.type = ASTToken.OPERATOR
