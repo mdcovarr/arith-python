@@ -129,7 +129,4 @@ class InputReader(object):
             self.tokens.append(self.sub_string)
             self.sub_string = ''
 
-        print self.tokens
-        exit(0)
-
         return True
