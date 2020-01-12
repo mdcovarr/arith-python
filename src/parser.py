@@ -26,6 +26,37 @@ class Parser(object):
         else:
             self.current_node = None
 
+    def is_first_node_valid(self):
+        """
+        Function to check if initial value of expression is valid
+        :return: True if valid start of expression, False otherwise
+        """
+
+        if len(self.nodes) > 2:
+            if self.nodes[0].type is ASTToken.MINUS and self.nodes[1].type is ASTToken.INTEGER:
+                return True
+            elif self.nodes[0].type is ASTToken.INTEGER:
+                return True
+            else:
+                return False
+        else:
+            if self.nodes[0].type is ASTToken.INTEGER:
+                return True
+            else:
+                return False
+
+    def is_last_node_valid(self):
+        """
+        Function to check if ending node is valid
+        :return: True if last node valid, False otherwise
+        """
+        end_index = len(self.nodes) - 1
+
+        if self.nodes[end_index].type is ASTToken.INTEGER:
+            return True
+
+        return False
+
     def fix_precedence(self, sub_tree):
         """
         Function used to fix precedence in the AST when attempting
