@@ -21,4 +21,10 @@ class ASTOperator(ASTNode):
         self.left_child = left_child
         self.right_child = right_child
         self.value = operator
-        self.type = ASTToken.OPERATOR
+
+        if operator == '+':
+            self.type = ASTToken.PLUS
+        elif operator == '-':
+            self.type = ASTToken.MINUS
+        elif operator == '*':
+            self.type = ASTToken.MULT
