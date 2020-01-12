@@ -107,9 +107,8 @@ class InputReader(object):
     def decrypt_expression(self):
         """
         Function used to decrypt the expression passed and create tokens
-        :return None:
+        :return: True if valid characters only, False otherwise
         """
-
         while self.current_position < len(self.expression):
             current_char = self.expression[self.current_position]
 
@@ -122,6 +121,7 @@ class InputReader(object):
                 continue
             else:
                 print('Error invalid character!')
+                return False
 
             self.current_position += 1
 
@@ -131,3 +131,5 @@ class InputReader(object):
 
         print self.tokens
         exit(0)
+
+        return True
