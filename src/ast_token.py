@@ -10,5 +10,6 @@ class ASTToken(enum.Enum):
     """
     NONE = 1
     INTEGER = 2
-    OPERATOR = 3
-
+    PLUS = 3
+    MINUS = 4
+    MULT = 5
