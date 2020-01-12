@@ -10,6 +10,7 @@ from interpreter import Interpreter
 from ast_integer import ASTInteger
 from ast_operator import ASTOperator
 
+OPERATORS_LIST = ['+', '-', '*']
 
 class Arith:
     """
@@ -28,7 +29,7 @@ class Arith:
         self.nodes = []
 
         for token in tokens:
-            if token == '*' or token == '+':
+            if token in OPERATORS_LIST:
                 current_node = ASTOperator('', '', token)
             else:
                 current_node = ASTInteger(token)
@@ -53,13 +54,15 @@ class Arith:
         while True:
             try:
                 self.reader.get_expression()
-                self.reader.decrypt_expression()
-                self.create_nodes(self.reader.get_tokens())
-                self.parser = Parser(self.nodes)
-                root = self.parser.parse()
-                self.interpreter = Interpreter(root)
-                value = self.interpreter.traverse_ast()
-                print('Value: {0}'.format(value))
+
+                if self.reader.decrypt_expression():
+                    self.reader.decrypt_expression()
+                    self.create_nodes(self.reader.get_tokens())
+                    self.parser = Parser(self.nodes)
+                    root = self.parser.parse()
+                    self.interpreter = Interpreter(root)
+                    value = self.interpreter.traverse_ast()
+                    print('Value: {0}'.format(value))
             except KeyboardInterrupt:
                 print("\nGracefully shutting down...")
                 try:
