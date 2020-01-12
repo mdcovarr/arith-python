@@ -16,9 +16,10 @@ class InputReader(object):
         self.expression = ''
         self.current_token_type = ASTToken.NONE
         self.current_position = 0
+        self.current_char = ''
         self.tokens = []
-        self.integers_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-']
-        self.operators_list = ['+', '*']
+        self.integers_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        self.operators_list = ['+', '*', '-']
         self.sub_string = ''
 
     def get_expression(self):
@@ -26,7 +27,7 @@ class InputReader(object):
         Function used to get the current expression from the user
         :return None:
         """
-        self.expression = input("Enter expression to be parsed: ")
+        self.expression = raw_input("Enter expression to be parsed: ")
 
     def set_expression(self, expression):
         """
@@ -53,6 +54,21 @@ class InputReader(object):
         self.sub_string = ''
         self.tokens = []
 
+    def update_current_token_type(self, token_value):
+        """
+        Function used to update the current token type seen
+        :param token_value: token type value
+        :return None:
+        """
+        if token_value == '+':
+            self.current_token_type = ASTToken.PLUS
+        elif token_value == '-':
+            self.current_token_type = ASTToken.MINUS
+        elif token_value == '*':
+            self.current_token_type = ASTToken.MULT
+        else:
+            self.current_token_type = ASTToken.INTEGER
+
     def check_integer(self, current_char):
         """
         Function used to check the validity of the next char being an integer. Checks are
@@ -63,13 +79,13 @@ class InputReader(object):
         if self.current_token_type is ASTToken.NONE or self.current_token_type is ASTToken.INTEGER:
             # append char to the running integer value being formed
             self.sub_string += current_char
-        elif self.current_token_type is ASTToken.OPERATOR:
+        else:
             # need to create a token for the operator
             self.tokens.append(self.sub_string)
             self.sub_string = ''
             self.sub_string += current_char
 
-        self.current_token_type = ASTToken.INTEGER
+        self.update_current_token_type(current_char)
 
     def check_operator(self, current_char):
         """
@@ -79,49 +95,39 @@ class InputReader(object):
         :return None:
         """
         if self.current_token_type is ASTToken.NONE:
-            # needs to error since we cannot start an expression with an operator
-            print('Error expression cannot start with an operator')
-        elif self.current_token_type is ASTToken.OPERATOR:
-            # needs to error since we cannot have two operators in a row
-            print('Error, an operator cannot be followed by an operator')
-        elif self.current_token_type is ASTToken.INTEGER:
-            # need to create a token for the integer
+            self.sub_string += current_char
+        else:
             self.tokens.append(self.sub_string)
             self.sub_string = ''
             self.sub_string += current_char
 
-        self.current_token_type = ASTToken.OPERATOR
-
-    def add_integer_token(self, current_integer):
-        """
-        Function used to add an integer token to the list of tokens
-        :param current_integer:
-        :return None:
-        """
-        self.tokens.append(current_integer)
-        self.sub_string = ''
-        self.current_token_type = ASTToken.INTEGER
+        # need to change this to the correct operator
+        self.update_current_token_type(current_char)
 
     def decrypt_expression(self):
         """
         Function used to decrypt the expression passed and create tokens
         :return None:
         """
-        current_char = ''
 
-        for i in range(len(self.expression)):
-            self.current_position = i
-            current_char = self.expression[i]
+        while self.current_position < len(self.expression):
+            current_char = self.expression[self.current_position]
 
             if current_char in self.integers_list:
                 self.check_integer(current_char)
-            if current_char in self.operators_list:
+            elif current_char in self.operators_list:
                 self.check_operator(current_char)
-            if current_char == ' ':
+            elif current_char == ' ':
+                self.current_position += 1
                 continue
+            else:
+                print('Error invalid character!')
 
-        if self.sub_string in self.operators_list:
-            print('Error cannot end expression with an operator')
-        else:
-            self.add_integer_token(self.sub_string)
+            self.current_position += 1
 
+        if self.sub_string != '':
+            self.tokens.append(self.sub_string)
+            self.sub_string = ''
+
+        print self.tokens
+        exit(0)
