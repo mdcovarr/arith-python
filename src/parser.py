@@ -17,7 +17,7 @@ class Parser(object):
         :param nodes: nodes representing integers and operators
         """
         self.nodes = nodes
-        self.current_node = self.nodes.pop(0)
+        self.current_node = None
         self.ast = self.current_node
 
     def get_next_node(self):
@@ -32,7 +32,7 @@ class Parser(object):
         :return: True if valid start of expression, False otherwise
         """
 
-        if len(self.nodes) > 2:
+        if len(self.nodes) >= 2:
             if self.nodes[0].type is ASTToken.MINUS and self.nodes[1].type is ASTToken.INTEGER:
                 return True
             elif self.nodes[0].type is ASTToken.INTEGER:
@@ -88,6 +88,7 @@ class Parser(object):
         :return ASTNode: ASTNode representing the root node
         """
         expression = Expression()
+        self.get_next_node()
 
         while len(self.nodes) > 0:
             self.get_next_node()
@@ -106,6 +107,13 @@ class Parser(object):
         Abstract Syntax Tree
         :return ASTNode: the ASTNode that is the root of the AST
         """
+        if not self.is_first_node_valid():
+            print('Error Invalid way to start expression')
+
+        if not self.is_last_node_valid():
+            print('Error Invalid way to end expression')
+
+        exit(0)
         return self.create_ast()
 
     def print_ast(self):
