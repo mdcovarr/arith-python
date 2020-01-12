@@ -12,6 +12,7 @@ from ast_operator import ASTOperator
 
 OPERATORS_LIST = ['+', '-', '*']
 
+
 class Arith:
     """
         Arith class used to run the arith expression tokening language
@@ -34,16 +35,6 @@ class Arith:
             else:
                 current_node = ASTInteger(token)
             self.nodes.append(current_node)
-
-    def create_tree(self):
-        pass
-
-    def parse(self):
-        """
-        Function which takes a string and attempts to return an abstract syntax
-        tree if valid input to arith language
-        """
-        self.create_nodes(self.reader.get_tokens())
 
     def run(self):
         """
