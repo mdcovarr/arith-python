@@ -44,13 +44,19 @@ class Arith:
         """
         while True:
             try:
+                # get expression from user
                 self.reader.get_expression()
 
+                # check if expression has all valid characters
                 if self.reader.decrypt_expression():
-                    self.reader.decrypt_expression()
+                    # create AST nodes
                     self.create_nodes(self.reader.get_tokens())
+
+                    # attempt to parse, meaning creating AST
                     self.parser = Parser(self.nodes)
                     root = self.parser.parse()
+
+                    # interpret the AST and return value
                     self.interpreter = Interpreter(root)
                     value = self.interpreter.traverse_ast()
                     print('Value: {0}'.format(value))
