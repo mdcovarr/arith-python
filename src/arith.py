@@ -60,6 +60,8 @@ class Arith:
                     self.interpreter = Interpreter(root)
                     value = self.interpreter.traverse_ast()
                     print('Value: {0}'.format(value))
+            except Exception as e:
+                print(e.message)
             except KeyboardInterrupt:
                 print("\nGracefully shutting down...")
                 try:

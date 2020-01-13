@@ -20,6 +20,14 @@ class Parser(object):
         self.current_node = None
         self.ast = None
 
+    def error(self, error_message):
+        """
+        Function used to raise Exception with error message
+        :param error_message: error message
+        :return None:
+        """
+        raise Exception(error_message)
+
     def get_ast_root(self):
         """
         Function used to get the root of the ast
@@ -172,13 +180,13 @@ class Parser(object):
         :return ASTNode: the ASTNode that is the root of the AST
         """
         if not self.is_first_node_valid():
-            print('Error Invalid way to start expression')
+            self.error('Error: Invalid way to start expression')
 
         if not self.is_last_node_valid():
-            print('Error Invalid way to end expression')
+            self.error('Error: Invalid way to end expression')
 
         if not self.has_valid_operators():
-            print('Error Invalid operator sequences')
+            self.error('Error: Invalid operator sequences')
 
         self.create_negative_numbers()
 

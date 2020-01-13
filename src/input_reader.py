@@ -22,6 +22,14 @@ class InputReader(object):
         self.operators_list = ['+', '*', '-']
         self.sub_string = ''
 
+    def error(self, error_string):
+        """
+        Function used to raise exception with error string
+        :param error_string:
+        :return None:
+        """
+        raise Exception(error_string)
+
     def get_expression(self):
         """
         Function used to get the current expression from the user
@@ -121,8 +129,7 @@ class InputReader(object):
                 self.current_position += 1
                 continue
             else:
-                print('Error invalid character!')
-                return False
+                self.error('Error: Invalid Character!')
 
             self.current_position += 1
 
