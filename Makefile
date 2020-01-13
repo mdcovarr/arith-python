@@ -7,3 +7,7 @@ arith:
 	$(pyinstaller) --onefile --name arith ./src/__main__.py
 	mv dist/arith ./
 	rm -rf arith.spec build/ dist/
+
+test:
+	cp arith ./cse210A-asgtest/
+	cd  ./cse210A-asgtest && ./test.sh
