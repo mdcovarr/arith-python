@@ -4,11 +4,11 @@ Implementation of the arith language in python
 ###### Table of Contents
 [Clone Repository] (#clone)
 [Requirements] (#requirements)
-[Documentation ] (#docs)
+[Documentation] (#docs)
 [Build Project](#build)
 
 
-<a name="clone">
+<a name="clone" />
 # Clone Repository
 You need to clone recursively due to `arith-python` containing
 a submodule named `cse210A-asgtest`
@@ -19,7 +19,7 @@ git clone --recursive https://github.com/mdcovarr/arith-python.git
 # Development Enviornment
 Software was developed on `CentOS 7`
 
-<a name="requirements">
+<a name="requirements" />
 # Software Requirements
 Required software in order to run **arith-python** software
 ## Install Python 3
@@ -43,7 +43,7 @@ sudo pip3 install pyinstaller
 **arith-python/src**
 * Soruce code of implementation
 
-<a name="docs">
+<a name="docs" />
 # Software Documentation
 ## Classs **Arith** (arith.py)
 Class used by the main to run software.
@@ -115,6 +115,6 @@ currently built AST. Expression object encapsulates
 a ASTOperator and a ASTInteger.
 
 
-<a name="build">
+<a name="build" />
 # Build Project
 I should really add some stuff here
