@@ -68,7 +68,7 @@ stdout: Error Invalid Character!
 Example
 ```
 stdin: 4 * 8 + 11
-tokens = ['4', '*', '+', '11']
+tokens = ['4', '*', '8', '+', '11']
 ```
 
 
