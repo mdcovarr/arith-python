@@ -3,8 +3,11 @@ Implementation of the arith language in python
 
 ## Table of Contents
 [Clone Repository](#Clone-repository)
+
 [Software Requirements](#Software-requirements)
+
 [Documentation](#Software-documentation)
+
 [Build Project](#Build-project)
 
 
