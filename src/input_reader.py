@@ -53,6 +53,7 @@ class InputReader(object):
         self.current_token_type = ASTToken.NONE
         self.sub_string = ''
         self.tokens = []
+        self.current_position = 0
 
     def update_current_token_type(self, token_value):
         """
