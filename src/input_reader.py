@@ -35,13 +35,13 @@ class InputReader(object):
         Function used to get the current expression from the user
         :return None:
         """
-        self.expression = raw_input()
+        self.expression = input()
 
     def set_expression(self, expression):
         """
         Setter function used to set the expression member variable
         :param expression:
-        :return None:
+        :return Nonea
         """
         self.expression = expression
 

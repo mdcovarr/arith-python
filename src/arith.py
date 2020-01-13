@@ -61,7 +61,7 @@ class Arith:
                     value = self.interpreter.traverse_ast()
                     print('{0}'.format(value))
             except Exception as e:
-                print(e.message)
+                print(e.args[0])
             except KeyboardInterrupt:
                 print("\nGracefully shutting down...")
                 try:
