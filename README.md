@@ -3,6 +3,8 @@ Implementation of the arith language in python
 
 ### Author
 Michael David Covarrubias
+**Course** CSE210A Programming Languages
+**Assignment** Homework 1
 
 ## Table of Contents
 [Clone Repository](#Clone-repository)
