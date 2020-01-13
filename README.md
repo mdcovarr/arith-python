@@ -1,14 +1,14 @@
 # arith-python
 Implementation of the arith language in python
 
-###### Table of Contents
-[Clone Repository] (#clone)
-[Requirements] (#requirements)
-[Documentation] (#docs)
-[Build Project](#build)
+## Table of Contents
+- [Clone Repository] (#Clone Repository)
+- [Software Requirements] (#Software Requirements)
+- [Documentation] (#Documentation)
+[Build Project](#Build Project)
 
 
-<a name="clone" />
+
 # Clone Repository
 You need to clone recursively due to `arith-python` containing
 a submodule named `cse210A-asgtest`
@@ -115,6 +115,5 @@ currently built AST. Expression object encapsulates
 a ASTOperator and a ASTInteger.
 
 
-<a name="build" />
 # Build Project
 I should really add some stuff here
