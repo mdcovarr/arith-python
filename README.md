@@ -78,8 +78,15 @@ not having the expression end with an operator e.g., '+',
 '-', '*'. And making sure that there are no expressions
 with invalid format of operators e.g., '9 * - - - 9'. If
 expression is invalid, an Exception is thrown and the
-Abstract Syntax Tree is not formed. However, the expression is validate the Parser class creates the
+Abstract Syntax Tree is not formed. However, if the expression is validate the Parser class creates the
 Abstract Syntax Tree.
+
+Example's
+```
+'9 * 8 - 2 -'       // Invalid Expression
+'9 * - * 10 + 2'    // Invalid Expression
+'-1 * -2 + 7'       // Valid Expression
+```
 
 
 ## Class **Interpreter** (interpreter.py)
