@@ -18,7 +18,7 @@ class Parser(object):
         """
         self.nodes = nodes
         self.current_node = None
-        self.ast = self.current_node
+        self.ast = None
 
     def get_next_node(self):
         if len(self.nodes) > 0:
@@ -86,6 +86,27 @@ class Parser(object):
             j += 1
         return True
 
+    def create_negative_numbers(self):
+        """
+        Function used to create negative numbers as a single node
+        :return None:
+        """
+        i = 0
+        j = 1
+
+        while j < len(self.nodes):
+            if ((self.nodes[i].type is ASTToken.PLUS or self.nodes[i].type is ASTToken.MINUS
+                    or self.nodes[i].type is ASTToken.MULT) and self.nodes[j].type is ASTToken.MINUS):
+                k = j + 1
+                self.nodes[k].value = '{0}{1}'.format(self.nodes[j].value, self.nodes[k].value)
+                self.nodes.pop(j)
+            elif i == 0 and self.nodes[j].type is ASTToken.INTEGER:
+                self.nodes[j].value = '{0}{1}'.format(self.nodes[i].value, self.nodes[j].value)
+                self.nodes.pop(i)
+            else:
+                i += 1
+                j += 1
+
     def fix_precedence(self, sub_tree):
         """
         Function used to fix precedence in the AST when attempting
@@ -105,7 +126,7 @@ class Parser(object):
         """
         sub_tree.operator.right_child = sub_tree.right
 
-        if self.ast.value == '+' and sub_tree.operator.value == '*':
+        if (self.ast.value == '+' or self.ast.value == '-') and sub_tree.operator.value == '*':
             self.fix_precedence(sub_tree)
         else:
             sub_tree.operator.left_child = self.ast
@@ -118,10 +139,12 @@ class Parser(object):
         """
         expression = Expression()
         self.get_next_node()
+        self.ast = self.current_node
 
         while len(self.nodes) > 0:
             self.get_next_node()
-            if self.current_node.type is ASTToken.OPERATOR:
+            if (self.current_node.type is ASTToken.PLUS or self.current_node.type is ASTToken.MINUS
+                    or self.current_node.type is ASTToken.MULT):
                 expression.operator = self.current_node
                 self.get_next_node()
                 expression.right = self.current_node
@@ -145,7 +168,8 @@ class Parser(object):
         if not self.has_valid_operators():
             print('Error Invalid operator sequences')
 
-        exit(0)
+        self.create_negative_numbers()
+
         return self.create_ast()
 
     def print_ast(self):
