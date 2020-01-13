@@ -35,7 +35,7 @@ class InputReader(object):
         Function used to get the current expression from the user
         :return None:
         """
-        self.expression = raw_input("Enter expression to be parsed: ")
+        self.expression = raw_input()
 
     def set_expression(self, expression):
         """
