@@ -127,7 +127,7 @@ sudo make init
 ```
 
 
-### Build **arith** executable with command
+### Build **arith** executable
 executable will be created at **arith-python/arith**.
 To make arith executable run command:
 ```
