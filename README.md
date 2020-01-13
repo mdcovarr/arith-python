@@ -1,11 +1,11 @@
 # arith-python
 Implementation of the arith language in python
 
-# Table of Contents
-#### Clone Repository (#clone)
-#### Requirements (#requirements)
-#### Documentation (#docs)
-#### Build Project (#build)
+###### Table of Contents
+[Clone Repository] (#clone)
+[Requirements] (#requirements)
+[Documentation ] (#docs)
+[Build Project](#build)
 
 
 <a name="clone">
