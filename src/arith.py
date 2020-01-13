@@ -59,7 +59,7 @@ class Arith:
                     # interpret the AST and return value
                     self.interpreter = Interpreter(root)
                     value = self.interpreter.traverse_ast()
-                    print('Value: {0}'.format(value))
+                    print('{0}'.format(value))
             except Exception as e:
                 print(e.message)
             except KeyboardInterrupt:
@@ -70,3 +70,4 @@ class Arith:
                     os._exit(0)
 
             self.reader.reset_reader()
+            sys.exit(0)
