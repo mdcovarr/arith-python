@@ -57,6 +57,35 @@ class Parser(object):
 
         return False
 
+    def has_valid_operators(self):
+        """
+        Function used to check that there are no more than 2 operators
+        in a row. And if there are two operators the second needs to be a
+        minus since it can be used as a negative sign
+        :return: True if operators in expression are valid, False otherwise
+        """
+        i = 0
+        j = 1
+        seen_two_opers = False
+
+        while j < len(self.nodes):
+            if (self.nodes[i].type is ASTToken.PLUS) or (self.nodes[i].type is ASTToken.MINUS) or (self.nodes[i].type is ASTToken.MULT):
+                if seen_two_opers:
+                    if not self.nodes[j].type is ASTToken.INTEGER:
+                        return False
+                else:
+                    if not (self.nodes[j].type is ASTToken.INTEGER or self.nodes[j].type is ASTToken.MINUS):
+                        return False
+
+                if self.nodes[j].type is ASTToken.MINUS:
+                    seen_two_opers = True
+                else:
+                    seen_two_opers = False
+
+            i += 1
+            j += 1
+        return True
+
     def fix_precedence(self, sub_tree):
         """
         Function used to fix precedence in the AST when attempting
@@ -112,6 +141,9 @@ class Parser(object):
 
         if not self.is_last_node_valid():
             print('Error Invalid way to end expression')
+
+        if not self.has_valid_operators():
+            print('Error Invalid operator sequences')
 
         exit(0)
         return self.create_ast()
