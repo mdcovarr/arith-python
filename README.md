@@ -1,6 +1,9 @@
 # arith-python
 Implementation of the arith language in python
 
+### Author
+Michael David Covarrubias
+
 ## Table of Contents
 [Clone Repository](#Clone-repository)
 
