@@ -11,3 +11,6 @@ arith:
 test:
 	cp arith ./cse210A-asgtest/
 	cd  ./cse210A-asgtest && ./test.sh
+
+clean:
+	rm -rf dist/ build/ arith.spec arith
