@@ -10,7 +10,7 @@ Implementation of the arith language in python
 
 [Build Project](#Build-project)
 
-[Run Software](#Run-software)
+[Test Software](#Test-software)
 
 
 # Clone repository
@@ -120,7 +120,24 @@ a ASTOperator and a ASTInteger.
 
 
 # Build project
-I should really add some stuff here
+### Installing pyinstaller
+If you have installed **pip3** and **python** you can install pyinstaller with command:
+```
+sudo make init
+```
 
 
-# Run software
+### Build **arith** executable with command
+executable will be created at **arith-python/arith**.
+To make arith executable run command:
+```
+make arith
+```
+
+
+# Test software
+Once you have built the **arith** executable to test **arith** executable with the
+cse210A-nsgtest repository tests run command:
+```
+make test
+```
