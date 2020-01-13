@@ -35,3 +35,5 @@ class Interpreter(object):
             return eval('{0} + {1}'.format(self.visit_node(node.left_child), self.visit_node(node.right_child)))
         elif node.value == '*':
             return eval('{0} * {1}'.format(self.visit_node(node.left_child), self.visit_node(node.right_child)))
+        elif node.value == '-':
+            return eval('{0} - {1}'.format(self.visit_node(node.left_child), self.visit_node(node.right_child)))
