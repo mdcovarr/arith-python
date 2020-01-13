@@ -20,7 +20,19 @@ class Parser(object):
         self.current_node = None
         self.ast = None
 
+    def get_ast_root(self):
+        """
+        Function used to get the root of the ast
+        :return ASTNode: root of the AST
+        """
+        return self.ast
+
     def get_next_node(self):
+        """
+        Function used to get the next node in the list of nodes created
+        from expression
+        :return None:
+        """
         if len(self.nodes) > 0:
             self.current_node = self.nodes.pop(0)
         else:
