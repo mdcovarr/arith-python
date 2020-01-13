@@ -10,6 +10,8 @@ Implementation of the arith language in python
 
 [Build Project](#Build-project)
 
+[Run Software](#Run-software)
+
 
 # Clone repository
 You need to clone recursively due to `arith-python` containing
@@ -119,3 +121,6 @@ a ASTOperator and a ASTInteger.
 
 # Build project
 I should really add some stuff here
+
+
+# Run software
