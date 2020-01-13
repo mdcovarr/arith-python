@@ -5,7 +5,7 @@ Implementation of the arith language in python
 [Clone Repository] (#clone)
 [Software Requirements] (#requirements)
 [Documentation] (#documentation)
-[Build Project](#build)
+[Build Project] (#build)
 
 
 <a name="clone"/>
@@ -114,6 +114,6 @@ Class to encapsulate the expression to be added to the
 currently built AST. Expression object encapsulates
 a ASTOperator and a ASTInteger.
 
-<a name="build">
+<a name="build"/>
 # Build Project
 I should really add some stuff here
