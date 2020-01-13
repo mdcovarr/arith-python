@@ -12,7 +12,7 @@ git clone --recursive https://github.com/mdcovarr/arith-python.git
 **arith-python/cse210A-asgtest**
 * Directory of the Teaching Assistants Testing Software
 
-**arith-python/src
+**arith-python/src**
 * Soruce code of implementation
 
 # Build Project
