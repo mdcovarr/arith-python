@@ -1,3 +1,4 @@
+all: init arith test
 
 init:
 	pip3 install -r requirements.txt
