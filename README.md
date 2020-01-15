@@ -19,10 +19,8 @@ Michael David Covarrubias
 
 
 # Clone repository
-You need to clone recursively due to `arith-python` containing
-a submodule named `cse210A-asgtest`
 ```
-git clone --recursive https://github.com/mdcovarr/arith-python.git
+git clone https://github.com/mdcovarr/arith-python.git
 ```
 
 # Development Enviornment
@@ -45,9 +43,9 @@ sudo yum -y install python3-pip
 sudo pip3 install pyinstaller
 ```
 
-# Directories
-**arith-python/cse210A-asgtest**
-* Directory of the Teaching Assistants Testing Software
+# Directories and Scripts
+**arith-python/bin**, **arith-python/libexec**, **arith-python/test.sh**
+* Teaching Assistants Testing Software
 
 **arith-python/src**
 * Soruce code of implementation
@@ -151,5 +149,5 @@ make arith
 Once you have built the **arith** executable to test **arith** executable with the
 cse210A-nsgtest repository tests run command:
 ```
-make test
+./test.sh
 ```
