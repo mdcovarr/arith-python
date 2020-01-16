@@ -42,17 +42,6 @@ sudo apt-get install python3-pip
 sudo pip3 install pyinstaller
 ```
 
-Or you can install via command:
-
-```
-sudo make init
-```
-
-Once dependencies are installed, software can be ran and tested via:
-```
-./test.sh
-```
-
 # Directories and Scripts
 **arith-python/bin**, **arith-python/libexec**, **arith-python/test.sh**
 * Teaching Assistants Testing Software
