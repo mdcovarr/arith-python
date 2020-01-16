@@ -29,18 +29,28 @@ Software was developed on `CentOS 7`
 
 # Software requirements
 Required software in order to run **arith-python** software
-## Install Python 3
+* **python3**
+* **pip3**
+* **pyinstaller**
+
+## Software requirements on Debian 10
+**python3** already comes installed with Debian 10 however you will need to install
+**pip3**. **pip3** will be used to install **pyinstaller**. You can do this manually
+via commands
 ```
-sudo yum -y install python36
-```
-## Install Pip 3
-```
-sudo yum -y install python3-pip
+sudo apt-get install python3-pip
+sudo pip3 install pyinstaller
 ```
 
-## Install PyInstaller
+Or you can install via command:
+
 ```
-sudo pip3 install pyinstaller
+sudo make init
+```
+
+Once dependencies are installed, software can be ran and tested via:
+```
+./test.sh
 ```
 
 # Directories and Scripts

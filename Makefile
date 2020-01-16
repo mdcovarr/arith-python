@@ -1,7 +1,8 @@
 all: clean arith
 
 init:
-	pip3 install -r requirements.txt
+	sudo apt-get install python3-pip
+	sudo pip3 install -r requirements.txt
 
 arith:
 	pyinstaller --onefile --name arith ./src/__main__.py
