@@ -29,7 +29,8 @@ class Interpreter(object):
         :return: Evaluated expression at current node
         """
         if not hasattr(node, 'left_child') and not hasattr(node, 'right_child'):
-            return eval(node.value)
+            val = int(node.value)
+            return eval('{0}'.format(val))
 
         if node.value == '+':
             return eval('{0} + {1}'.format(self.visit_node(node.left_child), self.visit_node(node.right_child)))
